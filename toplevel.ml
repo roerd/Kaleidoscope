@@ -22,7 +22,14 @@ let rec main_loop lexbuf =
   | Ast.Expression _ ->
     print_endline "parsed a top-level expr"; prompt ()
 
-  with e ->
+  with
+  | Failure(s) ->
+    (* Discard buffer contents for error recovery. *)
+    Lexing.flush_input lexbuf;
+    print_string "Syntax error: ";
+    print_endline s;
+    prompt ()
+  | e ->
     (* Discard buffer contents for error recovery. *)
     Lexing.flush_input lexbuf;
     print_endline (Printexc.to_string e);

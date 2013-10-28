@@ -38,3 +38,5 @@ rule token = parse
 
   (* end of stream. *)
   | eof                                   { EOS }
+
+  | _                                     { UNKNOWN }
