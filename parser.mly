@@ -6,8 +6,8 @@
  * Lexer Tokens
  *===----------------------------------------------------------------------===*/
 
-/* The lexer returns these 'Kwd' if it is an unknown character, otherwise one of
- * these others for known things. */
+/* The lexer returns these 'UNKNOWN' if it is an unknown character, otherwise
+ * one of these others for known things. */
 
 /* commands */
 %token DEF EXTERN
