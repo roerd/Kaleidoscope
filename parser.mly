@@ -65,8 +65,7 @@ prototype:
   | IDENT LPAREN idents RPAREN             { Prototype($1, Array.of_list $3) }
 ;
 idents:
-  | IDENT COMMA idents                     { $1 :: $3 }
-  | IDENT                                  { [$1] }
+  | IDENT idents                           { $1 :: $2 }
   |                                        { [] }
 ;
 
