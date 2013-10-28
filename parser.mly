@@ -27,7 +27,7 @@
 %left TIMES
 
 %start toplevel
-%type <Ast.top> toplevel
+%type <Ast.toplevel> toplevel
 %%
 
 expr:
@@ -77,9 +77,9 @@ toplevel:
   | terminator                             { $1 }
 ;
 statement:
-  | expr                                   { Expr $1 }
-  | extern                                 { Proto $1 }
-  | definition                             { Func $1 }
+  | expr                                   { Expression $1 }
+  | extern                                 { Extern $1 }
+  | definition                             { Definition $1 }
 ;
 terminator:
   | SEMICOLON                              { Sep }

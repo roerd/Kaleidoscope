@@ -15,11 +15,11 @@ let rec main_loop lexbuf =
     Lexing.flush_input lexbuf;
     main_loop lexbuf
 
-  | Ast.Func _ ->
+  | Ast.Definition _ ->
     print_endline "parsed a function definition."; prompt ()
-  | Ast.Proto _ ->
+  | Ast.Extern _ ->
     print_endline "parsed an extern."; prompt ()
-  | Ast.Expr _ ->
+  | Ast.Expression _ ->
     print_endline "parsed a top-level expr"; prompt ()
 
   with e ->

@@ -24,4 +24,9 @@ type proto = Prototype of string * string array
 (* func - This type represents a function definition itself. *)
 type func = Function of proto * expr
 
-type top = Expr of expr | Proto of proto | Func of func | Sep | End
+type toplevel =
+  | Expression of expr
+  | Extern of proto
+  | Definition of func
+  | Sep
+  | End
