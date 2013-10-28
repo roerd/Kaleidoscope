@@ -11,7 +11,9 @@ let rec main_loop lexbuf =
   | Ast.End -> ()
 
   (* ignore top-level semicolons. *)
-  | Ast.Sep -> main_loop lexbuf
+  | Ast.Sep ->
+    Lexing.flush_input lexbuf;
+    main_loop lexbuf
 
   | Ast.Func _ ->
     print_endline "parsed a function definition."; prompt ()
@@ -21,5 +23,7 @@ let rec main_loop lexbuf =
     print_endline "parsed a top-level expr"; prompt ()
 
   with e ->
-    (* error recovery. *)
-    print_endline (Printexc.to_string e); prompt ()
+    (* Discard buffer contents for error recovery. *)
+    Lexing.flush_input lexbuf;
+    print_endline (Printexc.to_string e);
+    prompt ()
