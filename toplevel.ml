@@ -29,8 +29,3 @@ let rec main_loop lexbuf =
     print_string "Syntax error: ";
     print_endline s;
     prompt ()
-  | e ->
-    (* Discard buffer contents for error recovery. *)
-    Lexing.flush_input lexbuf;
-    print_endline (Printexc.to_string e);
-    prompt ()
