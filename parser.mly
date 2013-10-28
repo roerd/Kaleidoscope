@@ -22,6 +22,10 @@
 /* binary operators */
 %token LESS_THAN PLUS MINUS TIMES
 
+/*===---------------------------------------------------------------------===
+ * Parser
+ *===---------------------------------------------------------------------===*/
+
 %left LESS_THAN
 %left PLUS MINUS
 %left TIMES
