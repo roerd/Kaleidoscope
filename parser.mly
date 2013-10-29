@@ -92,6 +92,11 @@ idents:
   |                                       { [] }
 ;
 
+/*  external ::= 'extern' prototype */
+extern:
+  | EXTERN prototype                      { $2 }
+;
+
 /* definition ::= 'def' prototype expression */
 definition:
   | DEF prototype expr                    { Function($2, $3) }
@@ -110,9 +115,4 @@ statement:
 terminator:
   | SEMICOLON                             { Sep }
   | EOS                                   { End }
-;
-
-/*  external ::= 'extern' prototype */
-extern:
-  | EXTERN prototype                      { $2 }
 ;
