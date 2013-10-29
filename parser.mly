@@ -72,7 +72,7 @@ expr:
   | expr MINUS expr                       { Binary('-', $1, $3) }
   | expr TIMES expr                       { Binary('*', $1, $3) }
 
-  | UNKNOWN                               { parse_error "unknown token when expecting an expression." }
+  | UNKNOWN        { parse_error "unknown token when expecting an expression." }
 ;
 argumentexpr:
   | expr COMMA argumentexpr               { $1 :: $3 }
@@ -84,8 +84,8 @@ argumentexpr:
  *   ::= id '(' id* ')' */
 prototype:
   | IDENT LPAREN idents RPAREN            { Prototype($1, Array.of_list $3) }
-  | IDENT LPAREN idents                   { parse_error "expected ')' in prototype" }
-  | IDENT                                 { parse_error "expected '(' in prototype" }
+  | IDENT LPAREN idents              { parse_error "expected ')' in prototype" }
+  | IDENT                            { parse_error "expected '(' in prototype" }
 ;
 idents:
   | IDENT idents                          { $1 :: $2 }
@@ -108,7 +108,7 @@ toplevel:
   | terminator                            { $1 }
 ;
 statement:
-  | expr                                  { Expression $1 }
+  | expr                       { Expression(Function(Prototype("", [||]), $1)) }
   | extern                                { Extern $1 }
   | definition                            { Definition $1 }
 ;

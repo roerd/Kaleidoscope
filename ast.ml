@@ -25,7 +25,7 @@ type proto = Prototype of string * string array
 type func = Function of proto * expr
 
 type toplevel =
-  | Expression of expr
+  | Expression of func
   | Extern of proto
   | Definition of func
   | Sep
