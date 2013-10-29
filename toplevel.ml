@@ -23,9 +23,6 @@ let rec main_loop lexbuf =
     print_endline "parsed a top-level expr"; prompt ()
 
   with
-  | Failure(s) ->
+  | Parsing.Parse_error ->
     (* Discard buffer contents for error recovery. *)
-    Lexing.flush_input lexbuf;
-    print_string "Syntax error: ";
-    print_endline s;
-    prompt ()
+    Lexing.flush_input lexbuf; prompt ()
