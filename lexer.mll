@@ -8,7 +8,9 @@ let letter = ['a'-'z' 'A'-'Z']
 let digit = ['0'-'9']
 rule token = parse
   (* Skip any whitespace. *)
-  | [' ' '\n' '\r' '\t']                  { token lexbuf }
+  | [' ' '\t']                            { token lexbuf }
+  | ['\n' '\r' ]
+      { Lexing.new_line lexbuf; token lexbuf }
 
   | "def"                                 { DEF }
   | "extern"                              { EXTERN }
