@@ -63,6 +63,7 @@ expr:
    *   ::= identifier
    *   ::= identifier '(' argumentexpr ')' */
   | IDENT LPAREN argumentexpr RPAREN { Call($1, Array.of_list $3) }
+  | IDENT LPAREN RPAREN              { Call($1, Array.of_list []) }
   | IDENT LPAREN argumentexpr        { parse_error "expected ')'" }
   | IDENT                            { Variable $1 }
 
@@ -77,7 +78,6 @@ expr:
 argumentexpr:
   | expr COMMA argumentexpr          { $1 :: $3 }
   | expr                             { [$1] }
-  |                                  { [] }
 ;
 
 /* prototype
