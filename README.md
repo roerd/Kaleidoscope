@@ -1,7 +1,7 @@
 Kaleidoscope
 ============
 
-The [LLVM tutorial language Kaleidoscope, OCaml version of the tutorial](http://llvm.org/docs/tutorial/OCamlLangImpl1.html), adapted by me to use `ocamllex` and `ocamlyacc` instead of Stream parsers.
+The [LLVM tutorial language Kaleidoscope, OCaml version of the tutorial]([http://llvm.org/docs/tutorial/OCamlLangImpl1.html](https://releases.llvm.org/12.0.1/docs/tutorial/OCamlLangImpl1.html)), adapted by me to use `ocamllex` and `ocamlyacc` instead of Stream parsers.
 
 Also adapted for compatibility with `libllvm-3.3-ocaml-dev`.
 
